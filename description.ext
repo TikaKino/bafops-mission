@@ -1,0 +1,38 @@
+author="TikaKino";
+onLoadName = "BAF Ops: Wolf's Lair";
+OnLoadMission = "";
+
+respawn = 2;
+respawnDelay = 5;
+respawnVehicleDelay = 5;
+respawnTemplatesWest[] = {"MenuPosition"};
+respawnTemplatesEast[] = {"MenuPosition"};
+respawnTemplatesGuer[] = {"MenuPosition"};
+
+respawnOnStart = 0;
+disabledAI = 1;
+joinUnassigned = 1;
+aiKills  = 1;
+
+class Header
+{
+	gameType = ZCoop; // Game type, see 'class' columns in the table below
+	minPlayers = 1; //min # of players the mission supports
+	maxPlayers = 12; //max # of players the mission supports
+};
+
+class CfgRemoteExec
+{        
+	class Functions
+	{
+		mode = 2; //no whitelist, all functions
+		jip = 1; //allow jip
+		allowedTargets = 0; //may target any machine
+	};
+	class Commands
+	{
+		mode = 2; //no whitelist, all commands
+		jip = 1; //allow jip
+		allowedTargets = 0; //may target any machine
+	};
+};

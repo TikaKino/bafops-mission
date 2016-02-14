@@ -1,0 +1,1 @@
+[[_this select 0,false],"addCuratorRemote",false] call BIS_fnc_MP
