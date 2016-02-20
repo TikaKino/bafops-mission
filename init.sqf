@@ -1,8 +1,16 @@
+MISSION_ROOT = call {
+    private "_arr";
+    _arr = toArray str missionConfigFile;
+    _arr resize (count _arr - 15);
+    toString _arr
+};
+
 addCuratorRemote = compileFinal "
 	gm_1 addCuratorEditableObjects [[_this select 0],_this select 1];
 ";
 null = [] execVM "playermarker.sqf";
 null = [] execVM "groupmarker.sqf";
+null = [] execVM "navpoint.sqf";
 null = [] execVM "ares\ares_addrhsreinforcementpools.sqf";
 null = [] execVM "ares\ares_addafricanreinforcementpools.sqf";
 null = ["AI Behaviours", "Center Turret", { [_this select 1] execVM "ares\ares_centerturret.sqf" }] call Ares_fnc_RegisterCustomModule;
