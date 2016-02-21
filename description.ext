@@ -1,25 +1,18 @@
 author="TikaKino";
-onLoadName = "BAF Ops: Wolf's Lair";
-OnLoadMission = "";
+onLoadName = "BAF Ops: EDEN";
 
 respawn = 2;
-respawnDelay = 5;
-respawnVehicleDelay = 5;
+respawnDelay = 30;
+respawnVehicleDelay = 30;
 respawnTemplatesWest[] = {"MenuPosition"};
 respawnTemplatesEast[] = {"MenuPosition"};
 respawnTemplatesGuer[] = {"MenuPosition"};
 
 respawnOnStart = 0;
+respawnButton = 1;
 disabledAI = 1;
 joinUnassigned = 1;
 aiKills  = 1;
-
-class Header
-{
-	gameType = ZCoop; // Game type, see 'class' columns in the table below
-	minPlayers = 1; //min # of players the mission supports
-	maxPlayers = 12; //max # of players the mission supports
-};
 
 class CfgRemoteExec
 {        

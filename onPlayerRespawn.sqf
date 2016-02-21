@@ -1,1 +1,6 @@
-[[_this select 0,false],"addCuratorRemote",false] call BIS_fnc_MP
+_new = (_this select 0);
+_old = (_this select 1);
+
+if(!isNull _old) then {
+	deleteVehicle _old;
+};
