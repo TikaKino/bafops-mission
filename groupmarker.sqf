@@ -12,12 +12,12 @@ if(hasInterface)then{
 	_marker2notplayer = true;			//Don't draw the second marker for the player
 	//End Config Variables
 	
-	waitUntil{uiSleep 0.2;(!isNil "ACE_player") and (alive ACE_player)};//wait for player to load
+	waitUntil{uiSleep 0.2;(time > 0) && (!isNull player) && (alive player)};//wait for player to load
 	
 	_playergroupnames = [];
 	
 	while{true}do{
-			waitUntil {uiSleep 0.1;visibleMap or visibleGPS};//update markers only while map or GPS are open
+			waitUntil {uiSleep 0.1;(visibleMap or visibleGPS) and ((time > 0) && (!isNull player) && (alive player))};//update markers only while map or GPS are open and player is alive
 			
 			//Get new group and joiner / leaver sets
 			_playergroupnew = units group player;
@@ -38,6 +38,11 @@ if(hasInterface)then{
 			//Add joiner markers
 			{
 				_markername = (name _x) + "GROUPMARKPOS";
+				
+				//Delete existing versions to weed out creeping errors
+				deleteMarkerLocal _markername;
+				deleteMarkerLocal _markername + "2";
+				
 				_marker = createMarkerLocal [_markername, (position _x)];//create marker
 				if(_showNames) then {
 					_marker setMarkerTextLocal (name _x);
@@ -53,7 +58,7 @@ if(hasInterface)then{
 					_marker setMarkerTypeLocal _marker2type;
 					_marker setMarkerColorLocal _marker2color;
 					_marker setMarkerSize _marker2size;
-				}
+				};
 				
 			} forEach _playergroupjoined;
 			
@@ -72,7 +77,12 @@ if(hasInterface)then{
 				if(!_marker2notplayer or player != _x) then {
 					_markername = (name _x)+"GROUPMARKPOS2";
 					_markername setMarkerPosLocal (position _x);
-				}
+				};
+				if(_marker2notplayer and player == _x) then {
+					//kill the second marker in case it has been created.
+					_markername = (name _x)+"GROUPMARKPOS2";
+					deleteMarkerLocal _markername;
+				};
 				
 			} forEach _playergroupnew;
 			
