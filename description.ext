@@ -1,9 +1,9 @@
 author="TikaKino";
-onLoadName = "BAF Ops: EDEN";
+onLoadName = "BAF Ops: Backstop";
 
 respawn = 2;
-respawnDelay = 30;
-respawnVehicleDelay = 30;
+respawnDelay = 45;
+respawnVehicleDelay = 45;
 respawnTemplatesWest[] = {"MenuPosition"};
 respawnTemplatesEast[] = {"MenuPosition"};
 respawnTemplatesGuer[] = {"MenuPosition"};
